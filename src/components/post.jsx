@@ -7,6 +7,7 @@ import TextAreaInner from './text-area-inner.jsx';
 import * as moment from 'moment-timezone';
 
 function Post(props) {
+    
     return (
         <div className="post">
             <div className="post__content">
@@ -21,17 +22,26 @@ function Post(props) {
                         </div>
                         <p className="post__content__section__data__description">{props.post.description}</p>
                         <div className="post__content__section__data__buttons">
-                            <ButtonInline type="button" text="Reaccionar" handleClick={() => props.handleReaction(props.index)}/>
-                            <ButtonInline type="button" text="Comentar" handleClick={() => props.handleComment(props.index)}/>
+                            <ButtonInline 
+                                type="button" 
+                                text="Reaccionar" 
+                                handleClick={() => props.handleReaction(props.index)}/>
+                            <ButtonInline 
+                                type="button" 
+                                text="Comentar" 
+                                handleClick={() => props.handleComment(props.index)}/>
                         </div>
                     </div>
                 </div>
                 <div className="post__content__actions">
                     <div className="post__content__actions__count-reactions">
                         <ul>
-                            <li><span className="circle-reaction" style={{backgroundColor: 'green'}}></span></li>
-                            <li><span className="circle-reaction" style={{backgroundColor: 'blue'}}></span></li>
-                            <li><span className="circle-reaction" style={{backgroundColor: 'red'}}></span></li>
+                            {props.post.reactions.map((reaction, index) => {
+                                if(index>2) return;
+                                return (
+                                    <li key={index}><span className="circle-reaction" style={reaction}></span></li>
+                                )
+                            })}
                         </ul>
                         <p>{props.post.reactions.length}</p>
                     </div>
@@ -42,7 +52,11 @@ function Post(props) {
                 {props.post.comments.map((comment, index) => (
                     <Comment comment={comment} key={index} />
                 ))}
-                <TextAreaInner handleKeyDown={(e) => props.handleKeyDown(e, props.index) } text="Escribe un comentario" handleChangeComment={props.handleChangeComment}/>
+                <TextAreaInner
+                    value={props.value} 
+                    handleKeyDown={(e) => props.handleKeyDown(e, props.index) } 
+                    text="Escribe un comentario" 
+                    handleChangeComment={(e) => props.handleChangeComment(e)}/>
             </CommentsLayout>
         </div>
     )

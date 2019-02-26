@@ -2,13 +2,14 @@ import React, { Component } from 'react';
 import HomeLayout from '../components/home-layout.jsx';
 import StatusPost from './status-post.jsx';
 import ListPosts from './list-posts.jsx';
-
 import './home.scss';
+import Random from 'random-username-generator';
 
 class HomeContainer extends Component {
     state = {
         posts: localStorage.getItem('posts') ? JSON.parse(localStorage.getItem('posts')) : [],
         post: null,
+        username: Random.generate(),
     }
 
     pushPost = (post) => {
@@ -45,8 +46,11 @@ class HomeContainer extends Component {
     render() {
         return (
             <HomeLayout>
-                <StatusPost pushPost={this.pushPost}/>
-                <ListPosts 
+                <StatusPost 
+                    pushPost={this.pushPost} 
+                    username={this.state.username}/>
+                <ListPosts
+                    username={this.state.username} 
                     posts={this.state.posts} 
                     editPostReaction={this.editPostReaction} 
                     editPostComment={this.editPostComment} />

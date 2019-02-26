@@ -13,6 +13,7 @@
         "moment": "^2.24.0",
         "moment-timezone": "^0.5.23",
         "prop-types": "^15.7.2",
+        "random-username-generator": "^1.0.4",
         "react": "^16.8.3",
         "react-dom": "^16.8.3"
     },

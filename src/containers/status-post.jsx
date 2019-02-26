@@ -7,7 +7,7 @@ import moment from 'moment-timezone';
 // React Hook
 function StatusPost(props) {
     const [post, setPost] = useState({
-        username: 'Juan Rodriguez',
+        username: props.username,
         profilePicture: 'https://place-hold.it/60x60',
         time: null,
         description: '',
@@ -22,16 +22,34 @@ function StatusPost(props) {
         }
         setPost(postData)
         props.pushPost(postData);
+        clearData();
     }
 
     const handleChange = (event) => {
         setPost({ ...post, description: event.target.value})
     }
 
+    const clearData = () => {
+        setPost({
+            username: props.username,
+            profilePicture: 'https://place-hold.it/60x60',
+            time: null,
+            description: '',
+            comments: [],
+            reactions: [],
+        })
+    }
+
     return (
         <StatusPostLayout>
-            <TextArea text="Escribe aquí tu estado" handleChange={handleChange} />
-            <Button type="button" text="Publicar" handleClick={handleClick}/>
+            <TextArea 
+                text="Escribe aquí tu estado" 
+                handleChange={handleChange} 
+                value={post.description}/>
+            <Button 
+                type="button" 
+                text="Publicar" 
+                handleClick={handleClick}/>
         </StatusPostLayout>
     )
 }
