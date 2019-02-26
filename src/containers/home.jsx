@@ -5,6 +5,10 @@ import ListPosts from './list-posts.jsx';
 import './home.scss';
 import Random from 'random-username-generator';
 
+/**
+ * HomeContainer
+ * State = posts, post and username
+*/
 class HomeContainer extends Component {
     state = {
         posts: localStorage.getItem('posts') ? JSON.parse(localStorage.getItem('posts')) : [],
