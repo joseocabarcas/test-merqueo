@@ -7,6 +7,7 @@ function Post(props) {
     const [comment, setComment] = useState(props.comment.text)
 
     const [showComment, setShowComment] = useState(false)
+    const [validReaction, setValidReaction] = useState(false)
 
     // Controlar enter en textarea
     const handleKeyDown = (e, index) => {
@@ -24,8 +25,13 @@ function Post(props) {
     };
 
     const handleClickComment = () => {
-        console.log(!showComment)
         setShowComment(!showComment);
+    }
+
+    const handleReaction = (index) => {
+        if(validReaction) return;
+        setValidReaction(true);
+        props.handleReaction(index)
     }
 
     return (
@@ -35,7 +41,7 @@ function Post(props) {
             post={props.post} 
             key={props.index} 
             index={props.index} 
-            handleReaction={props.handleReaction} 
+            handleReaction={handleReaction} 
             handleChangeComment={handleChangeComment}
             value={comment} 
             handleKeyDown={handleKeyDown}/>
