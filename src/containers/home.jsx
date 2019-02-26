@@ -20,11 +20,36 @@ class HomeContainer extends Component {
         })
     }
 
+    editPostReaction = (index, reaction) => {
+        const posts = this.state.posts;
+        posts[index].reactions.push(reaction)
+        localStorage.setItem('posts', JSON.stringify([ ...posts ]))
+        this.setState((prevState, props) => {
+            return {
+                posts: [ ...posts ]
+            }
+        })
+    };
+
+    editPostComment = (index, comment) => {
+        const posts = this.state.posts;
+        posts[index].comments.push(comment)
+        localStorage.setItem('posts', JSON.stringify([ ...posts ]))
+        this.setState((prevState, props) => {
+            return {
+                posts: [ ...posts ]
+            }
+        })
+    };
+
     render() {
         return (
             <HomeLayout>
                 <StatusPost pushPost={this.pushPost}/>
-                <ListPosts posts={this.state.posts}/>
+                <ListPosts 
+                    posts={this.state.posts} 
+                    editPostReaction={this.editPostReaction} 
+                    editPostComment={this.editPostComment} />
             </HomeLayout>
         )
     }

@@ -35,13 +35,14 @@ function Post(props) {
                         </ul>
                         <p>{props.post.reactions.length}</p>
                     </div>
-                    <p className="post__content__actions__count-comment">{props.post.reactions.length} {props.post.reactions.length>1 ? 'Comentarios' : 'Comentario'}</p>
+                    <p className="post__content__actions__count-comment">{props.post.comments.length} {props.post.comments.length>1 ? 'Comentarios' : 'Comentario'}</p>
                 </div>
             </div>
             <CommentsLayout>
-                <Comment />
-                <Comment />
-                <TextAreaInner handleKeyDown={props.handleKeyDown} text="Escribe un comentario" handleChangeComment={props.handleChangeComment}/>
+                {props.post.comments.map((comment, index) => (
+                    <Comment comment={comment} key={index} />
+                ))}
+                <TextAreaInner handleKeyDown={(e) => props.handleKeyDown(e, props.index) } text="Escribe un comentario" handleChangeComment={props.handleChangeComment}/>
             </CommentsLayout>
         </div>
     )

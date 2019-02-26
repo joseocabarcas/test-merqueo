@@ -1,14 +1,17 @@
 import React from 'react';
-import './comment.scss'
+import moment from 'moment-timezone';
+import './comment.scss';
+
 
 function Comment(props) {
+    console.log(props.comment)
     return (
         <div className="comment">
             <img src="https://place-hold.it/60x60" alt="no profile"/>
             <div className="comment-content">
                 <h4><strong>Elena</strong></h4>
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Est accusantium vero sit modi no</p>
-                <span>hace 2 días</span>
+                <p>{props.comment.text}</p>
+                <span>{moment.tz(props.comment.time, 'America/Bogota').fromNow()}</span>
             </div>
         </div>
     )

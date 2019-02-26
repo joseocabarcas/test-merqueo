@@ -1,37 +1,51 @@
 import React, { useState } from 'react';
 import ListPostsLayout from '../components/list-posts-layout.jsx';
 import Post from '../components/post.jsx';
+import moment from 'moment-timezone';
 
 function ListPosts(props) {
 
     const [ reaction, setReaction ] = useState('');
     const [ comment, setComment ] = useState({
         text: '',
-        date: null,
+        time: null,
     });
 
-    const handleReaction = () => {
+    const handleReaction = (index) => {
         console.log('push reaction');
+        props.editPostReaction(index, true);
     };
 
-    const handleComment = (text) => {
+    const handleChangeComment = (text) => {
         setComment({
             ...comment,
-            text: text,
+            text: text.target.value,
         })
     };
 
-    const handleKeyDown = (e) => {
+    const handleKeyDown = (e, index) => {
         if(e.keyCode == 13 && e.shiftKey == false) {
             e.preventDefault();
             console.log('push comment');
+            const commentData = {
+                ...comment,
+                time: moment.tz('America/Bogota'),
+            }
+            setComment(commentData)
+            props.editPostComment(index, commentData);
         }
     }
 
     return (
         <ListPostsLayout>
             {props.posts.map((post, index) => (
-                <Post post={post} key={index} index={index} handleReaction={handleReaction} handleComment={handleComment} handleKeyDown={handleKeyDown}/>
+                <Post 
+                    post={post} 
+                    key={index} 
+                    index={index} 
+                    handleReaction={handleReaction} 
+                    handleChangeComment={handleChangeComment} 
+                    handleKeyDown={handleKeyDown}/>
             ))}
         </ListPostsLayout>
     )
