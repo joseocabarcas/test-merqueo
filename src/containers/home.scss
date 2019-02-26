@@ -34,3 +34,9 @@ textarea {
     outline: none;
   }
 }
+
+@media (max-width: 768px) {
+  main {
+    width: 95vw;
+  }
+}

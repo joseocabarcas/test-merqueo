@@ -4,6 +4,7 @@ import './post.scss';
 import ButtonInline from './button-inline.jsx';
 import CommentsLayout from './comments-layout.jsx';
 import TextAreaInner from './text-area-inner.jsx';
+import * as moment from 'moment';
 
 function Post(props) {
     return (
@@ -11,14 +12,14 @@ function Post(props) {
             <div className="post__content">
                 <div className="post_content__section">
                     <div className="post__content__section__picture">
-                        <img src="https://place-hold.it/60x60" alt="No image"/>
+                        <img src={props.post.profilePicture} alt="No image"/>
                     </div>
                     <div className="post__content__section__data">
                         <div className="post__content__section__data__title">
-                            <h3>Juan Rodriguez</h3>
-                            <span>Hace 40 minutos</span>
+                            <h3>{props.post.username}</h3>
+                            <span>{moment(props.post.time, "YYYYMMDD").fromNow()}</span>
                         </div>
-                        <p className="post__content__section__data__description">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Est accusantium vero sit modi non, cumque ipsam. Delectus, dolorum debitis. Fugit, laborum! Fugiat inventore tempora, fuga itaque sint magni nisi veniam?</p>
+                        <p className="post__content__section__data__description">{props.post.description}</p>
                         <div className="post__content__section__data__buttons">
                             <ButtonInline type="button" text="Reaccionar"/>
                             <ButtonInline type="button" text="Comentar"/>
@@ -32,9 +33,9 @@ function Post(props) {
                             <li><span className="circle-reaction" style={{backgroundColor: 'blue'}}></span></li>
                             <li><span className="circle-reaction" style={{backgroundColor: 'red'}}></span></li>
                         </ul>
-                        <p>13</p>
+                        <p>{props.post.reactions.length}</p>
                     </div>
-                    <p className="post__content__actions__count-comment">3 comentarios</p>
+                    <p className="post__content__actions__count-comment">{props.post.reactions.length} {props.post.reactions.length>1 ? 'Comentarios' : 'Comentario'}</p>
                 </div>
             </div>
             <CommentsLayout>
