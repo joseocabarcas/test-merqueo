@@ -28,10 +28,11 @@ function Post(props) {
         setShowComment(!showComment);
     }
 
+    // Manejar Reacción (Solo se permite una)
     const handleReaction = (index) => {
         if(validReaction) return;
         setValidReaction(true);
-        props.handleReaction(index)
+        props.handleReaction(index);
     }
 
     return (
