@@ -1,9 +1,9 @@
 import React from 'react';
-import Comment from './comment.jsx';
+import Comment from '../comments/comment.jsx';
 import './post.scss';
-import ButtonInline from './button-inline.jsx';
-import CommentsLayout from './comments-layout.jsx';
-import TextAreaInner from './text-area-inner.jsx';
+import ButtonInline from '../buttons/button-inline.jsx';
+import CommentsLayout from '../comments/comments-layout.jsx';
+import TextAreaInner from '../textareas/text-area-inner.jsx';
 import * as moment from 'moment-timezone';
 
 function Post(props) {

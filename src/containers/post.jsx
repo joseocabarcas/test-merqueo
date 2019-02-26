@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
-import PostComponent from '../components/post.jsx';
+import PostComponent from '../components/posts/post.jsx';
 
+// React Hook
 function Post(props) {
 
     const [comment, setComment] = useState(props.comment.text)
 
+    // Controlar enter en textarea
     const handleKeyDown = (e, index) => {
         if(e.keyCode == 13 && e.shiftKey == false) {
             props.handleKeyDown(e, index);
@@ -12,6 +14,7 @@ function Post(props) {
         }
     }
 
+    // Controlar cambios en el input
     const handleChangeComment = (text) => {
         const data = text.target.value;
         setComment(data)

@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import ListPostsLayout from '../components/list-posts-layout.jsx';
+import ListPostsLayout from '../components/posts/list-posts-layout.jsx';
 import Post from './post.jsx';
 import moment from 'moment-timezone';
 
+// React Hook
 function ListPosts(props) {
 
-    // const [ reaction, setReaction ] = useState('');
     const [ comment, setComment ] = useState({
         text: '',
         time: null,
@@ -13,12 +13,15 @@ function ListPosts(props) {
         username: props.username,
     });
 
+    // Array para dar un color random a la reacción
     const randomColor = [{backgroundColor: 'green'}, {backgroundColor: 'blue'}, {backgroundColor: 'red'}]
 
+    // Manejar reacción
     const handleReaction = (index) => {
         props.editPostReaction(index, randomColor[Math.floor(Math.random()*randomColor.length)]);
     };
 
+    // Controlar cambios en el textarea
     const handleChangeComment = (text) => {
         setComment({
             ...comment,
@@ -26,6 +29,7 @@ function ListPosts(props) {
         })
     };
 
+    // Controlar el enter en el textarea
     const handleKeyDown = (e, index) => {
         if(e.keyCode == 13 && e.shiftKey == false) {
             e.preventDefault();
@@ -36,15 +40,6 @@ function ListPosts(props) {
             setComment(commentData)
             props.editPostComment(index, commentData);
         }
-    }
-
-    const clearComment = () => {
-        setComment({
-            text: '',
-            time: null,
-            picture: 'https://place-hold.it/60x60',
-            username: props.username,
-        })
     }
 
     return (

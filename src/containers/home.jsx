@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
+import Random from 'random-username-generator';
 import HomeLayout from '../components/home-layout.jsx';
 import StatusPost from './status-post.jsx';
 import ListPosts from './list-posts.jsx';
 import './home.scss';
-import Random from 'random-username-generator';
 
 /**
  * HomeContainer
@@ -16,6 +16,7 @@ class HomeContainer extends Component {
         username: Random.generate(),
     }
 
+    // Agregar un post
     pushPost = (post) => {
         this.setState((prevState, props) => {
             localStorage.setItem('posts', JSON.stringify([ ...prevState.posts, post ]))
@@ -25,6 +26,7 @@ class HomeContainer extends Component {
         })
     }
 
+    // Agregar la reacción al post
     editPostReaction = (index, reaction) => {
         const posts = this.state.posts;
         posts[index].reactions.push(reaction)
@@ -36,6 +38,7 @@ class HomeContainer extends Component {
         })
     };
 
+    // Agregar un comentario
     editPostComment = (index, comment) => {
         const posts = this.state.posts;
         posts[index].comments.push(comment)

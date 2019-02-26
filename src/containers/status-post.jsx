@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import StatusPostLayout from '../components/status-post-layout.jsx';
-import Button from '../components/button.jsx';
-import TextArea from '../components/text-area.jsx';
+import Button from '../components/buttons/button.jsx';
+import TextArea from '../components/textareas/text-area.jsx';
 import moment from 'moment-timezone';
 
 // React Hook
@@ -15,6 +15,7 @@ function StatusPost(props) {
         reactions: [],
     });
 
+    // Controlar click del button
     const handleClick = () => {
         const postData = { 
             ...post,
@@ -25,10 +26,12 @@ function StatusPost(props) {
         clearData();
     }
 
+    // Manejar cambios en el textarea
     const handleChange = (event) => {
         setPost({ ...post, description: event.target.value})
     }
 
+    // Limpiar datos del post
     const clearData = () => {
         setPost({
             username: props.username,
