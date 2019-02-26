@@ -7,7 +7,7 @@ import TextArea from '../components/text-area.jsx';
 function StatusPost() {
     return (
         <StatusPostLayout>
-            <TextArea placeholder="Escribe aquí tu estado"/>
+            <TextArea text="Escribe aquí tu estado"/>
             <Button type="submit" text="Publicar"/>
         </StatusPostLayout>
     )

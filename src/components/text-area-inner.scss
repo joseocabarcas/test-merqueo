@@ -1,0 +1,15 @@
+.text-area-inner {
+    height: 30px;
+    border: 1px solid #313131;
+    text-align: left;
+    line-height: 30px;
+    padding-left: 10px;
+    color: black;
+    margin: 0 10px;
+    &:focus, &:hover {
+        outline: none;
+    }
+    &::placeholder {
+        color: black;
+    }
+}

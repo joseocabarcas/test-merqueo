@@ -1,0 +1,24 @@
+.comment {
+    display: flex;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin: 10px 0;
+    img {
+        height: 30px;
+        width: 30px;
+        border-radius: 50%;
+        margin-right: 60px;
+    }
+    .comment-content {
+        h4 {
+            color: green;
+            font-size: 12px;
+        }
+        p {
+            font-size: 12px;
+        }
+        span {
+            font-size: 10px;
+        }
+    }
+}

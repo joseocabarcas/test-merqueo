@@ -4,5 +4,7 @@
     text-align: left;
     line-height: 50px;
     padding-left: 10px;
-    color: green;
+    &::placeholder {
+        color: green;
+    }
 }
