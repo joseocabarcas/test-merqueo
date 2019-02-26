@@ -5,4 +5,17 @@
     cursor: pointer;
     padding: 0;
     margin-right: 15px;
+    outline: none;
+    &:focus, &:hover {
+        outline: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .button-inline {
+        border: 1px solid gray;
+        flex-grow: 1;
+        padding: 10px;
+        margin: 1px;
+    }
 }

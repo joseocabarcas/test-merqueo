@@ -5,4 +5,8 @@
     color: white;
     align-self: flex-end;
     margin: 5px;
+    outline: none;
+    &:focus, &:hover {
+        outline: none;
+    }
 }

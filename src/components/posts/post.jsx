@@ -5,6 +5,7 @@ import ButtonInline from '../buttons/button-inline.jsx';
 import CommentsLayout from '../comments/comments-layout.jsx';
 import TextAreaInner from '../textareas/text-area-inner.jsx';
 import * as moment from 'moment-timezone';
+import PostContentAction from './post-content-actions.jsx';
 
 function Post(props) {
     
@@ -29,34 +30,24 @@ function Post(props) {
                             <ButtonInline 
                                 type="button" 
                                 text="Comentar" 
-                                handleClick={() => props.handleComment(props.index)}/>
+                                handleClick={() => props.handleClickComment()}/>
                         </div>
                     </div>
                 </div>
-                <div className="post__content__actions">
-                    <div className="post__content__actions__count-reactions">
-                        <ul>
-                            {props.post.reactions.map((reaction, index) => {
-                                if(index>2) return;
-                                return (
-                                    <li key={index}><span className="circle-reaction" style={reaction}></span></li>
-                                )
-                            })}
-                        </ul>
-                        <p>{props.post.reactions.length}</p>
-                    </div>
-                    <p className="post__content__actions__count-comment">{props.post.comments.length} {props.post.comments.length>1 ? 'Comentarios' : 'Comentario'}</p>
-                </div>
+                <PostContentAction post={props.post} />
             </div>
             <CommentsLayout>
                 {props.post.comments.map((comment, index) => (
                     <Comment comment={comment} key={index} />
                 ))}
-                <TextAreaInner
-                    value={props.value} 
-                    handleKeyDown={(e) => props.handleKeyDown(e, props.index) } 
-                    text="Escribe un comentario" 
-                    handleChangeComment={(e) => props.handleChangeComment(e)}/>
+                {
+                    props.showComment && 
+                        <TextAreaInner
+                            value={props.value} 
+                            handleKeyDown={(e) => props.handleKeyDown(e, props.index) } 
+                            text="Escribe un comentario" 
+                            handleChangeComment={(e) => props.handleChangeComment(e)}/>
+                }
             </CommentsLayout>
         </div>
     )
