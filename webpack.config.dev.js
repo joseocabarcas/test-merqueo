@@ -13,14 +13,6 @@ module.exports = {
           { loader: 'style-loader', options: { sourceMap: true } },
           { loader: 'css-loader', options: { sourceMap: true } },
           { loader: 'sass-loader', options: { sourceMap: true } },
-          { loader: 'sass-resources-loader',
-            options: {
-              sourceMap: true,
-              resources: [
-                path.resolve(__dirname, './src/views/_variables.scss'),
-              ]
-            }
-          }
         ]
       },
       // {

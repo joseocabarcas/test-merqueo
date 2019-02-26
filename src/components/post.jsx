@@ -1,4 +1,5 @@
 import React from 'react';
+import Comment from './comment.jsx';
 
 function Post(props) {
     return (
@@ -31,20 +32,8 @@ function Post(props) {
                 </div>
             </div>
             <div className="comments">
-                <div className="comment">
-                    <img src="" alt="no profile"/>
-                    <div className="comment-content">
-                        <p><strong>Elena</strong></p>
-                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Est accusantium vero sit modi no</p>
-                    </div>
-                </div>
-                <div className="comment">
-                    <img src="" alt="no profile"/>
-                    <div className="comment-content">
-                        <p><strong>Elena</strong></p>
-                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Est accusantium vero sit modi no</p>
-                    </div>
-                </div>
+                <Comment />
+                <Comment />
             </div>
         </div>
     )

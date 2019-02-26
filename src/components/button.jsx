@@ -1,8 +1,9 @@
 import React from 'react';
+import './button.scss';
 
 function Button(props) {
     return (
-        <button type={props.type}>{props.text}</button>
+        <button className="button-primary" type={props.type}>{props.text}</button>
     )
 }
 

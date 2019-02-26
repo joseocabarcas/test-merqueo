@@ -19,13 +19,6 @@ module.exports = {
           use: [
             { loader: 'css-loader', options: { sourceMap: true } },
             { loader: 'sass-loader', options: { sourceMap: true } },
-            { loader: 'sass-resources-loader',
-              query: {
-                resources: [
-                  path.resolve(__dirname, './src/views/_variables.scss'),
-                ]
-              }
-            }
           ]
         })
       }
