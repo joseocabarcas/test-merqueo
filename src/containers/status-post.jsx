@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import StatusPostLayout from '../components/status-post-layout.jsx';
 import Button from '../components/button.jsx';
 import TextArea from '../components/text-area.jsx';
-import moment from 'moment';
+import moment from 'moment-timezone';
 
 // React Hook
 function StatusPost(props) {
@@ -18,10 +18,9 @@ function StatusPost(props) {
     const handleClick = () => {
         const postData = { 
             ...post,
-            time: moment(),   
+            time: moment.tz('America/Bogota'),   
         }
         setPost(postData)
-        console.log(postData);
         props.pushPost(postData);
     }
 

@@ -3,7 +3,7 @@ import './text-area-inner.scss';
 
 function TextAreaInner(props) {
     return (
-        <textarea className="text-area-inner" placeholder={props.text}></textarea>
+        <textarea onKeyDown={props.handleKeyDown} onChange={props.handleChangeComment} className="text-area-inner" placeholder={props.text}></textarea>
     )
 }
 

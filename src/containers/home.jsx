@@ -7,12 +7,13 @@ import './home.scss';
 
 class HomeContainer extends Component {
     state = {
-        posts: [],
+        posts: localStorage.getItem('posts') ? JSON.parse(localStorage.getItem('posts')) : [],
         post: null,
     }
 
     pushPost = (post) => {
         this.setState((prevState, props) => {
+            localStorage.setItem('posts', JSON.stringify([ ...prevState.posts, post ]))
             return {
                 posts: [ ...prevState.posts, post ]
             }

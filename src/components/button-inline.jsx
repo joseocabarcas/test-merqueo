@@ -3,7 +3,7 @@ import './button-inline.scss';
 
 function ButtonInline(props) {
     return (
-        <button className="button-inline" type={props.type}>{props.text}</button>
+        <button onClick={props.handleClick} className="button-inline" type={props.type}>{props.text}</button>
     )
 }
 

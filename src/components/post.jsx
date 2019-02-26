@@ -4,7 +4,7 @@ import './post.scss';
 import ButtonInline from './button-inline.jsx';
 import CommentsLayout from './comments-layout.jsx';
 import TextAreaInner from './text-area-inner.jsx';
-import * as moment from 'moment';
+import * as moment from 'moment-timezone';
 
 function Post(props) {
     return (
@@ -17,12 +17,12 @@ function Post(props) {
                     <div className="post__content__section__data">
                         <div className="post__content__section__data__title">
                             <h3>{props.post.username}</h3>
-                            <span>{moment(props.post.time, "YYYYMMDD").fromNow()}</span>
+                            <span>{moment.tz(props.post.time, 'America/Bogota').fromNow()}</span>
                         </div>
                         <p className="post__content__section__data__description">{props.post.description}</p>
                         <div className="post__content__section__data__buttons">
-                            <ButtonInline type="button" text="Reaccionar"/>
-                            <ButtonInline type="button" text="Comentar"/>
+                            <ButtonInline type="button" text="Reaccionar" handleClick={() => props.handleReaction(props.index)}/>
+                            <ButtonInline type="button" text="Comentar" handleClick={() => props.handleComment(props.index)}/>
                         </div>
                     </div>
                 </div>
@@ -41,7 +41,7 @@ function Post(props) {
             <CommentsLayout>
                 <Comment />
                 <Comment />
-                <TextAreaInner text="Escribe un comentario"/>
+                <TextAreaInner handleKeyDown={props.handleKeyDown} text="Escribe un comentario" handleChangeComment={props.handleChangeComment}/>
             </CommentsLayout>
         </div>
     )
